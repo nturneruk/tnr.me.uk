@@ -14,6 +14,7 @@
             background-color: #f0f0f0;
             margin: 0;
             font-family: Arial, sans-serif;
+            text-align: center;
         }
 
         .typewriter, .email {
@@ -21,14 +22,13 @@
             white-space: nowrap;
             border-right: 0.15em solid black;
             display: inline-block;
-            text-align: center;
         }
 
         .typewriter {
             font-size: 3rem;
             font-weight: bold;
             color: black;
-            animation: typingTitle 2.5s steps(30, end), blink-caret 0.75s step-end infinite;
+            animation: typingTitle 2s steps(30, end), blink-caret 0.75s step-end infinite;
         }
 
         .email {
@@ -39,17 +39,17 @@
             width: 0;
             border: none;
             display: none;
-            animation: typingEmail 2.5s steps(30, end) forwards;
+            animation: typingEmail 2s steps(30, end) forwards;
         }
 
         @keyframes typingTitle {
             from { width: 0; }
-            to { width: 11ch; } /* Adjust width to match the length of the text */
+            to { width: 12ch; } /* Adjust width to match the length of the text */
         }
 
         @keyframes typingEmail {
             from { width: 0; }
-            to { width: 12ch; } /* Adjust width to match the length of the text */
+            to { width: 14ch; } /* Adjust width to match the length of the text */
         }
 
         @keyframes blink-caret {
@@ -60,7 +60,7 @@
 </head>
 <body>
     <div class="typewriter">tnr.me.uk</div>
-    <a href="mailto:me@domain.net" class="email">noah@tnr.me.uk</a>
+    <a href="mailto:noah@tnr.me.uk" class="email">noah@tnr.me.ukt</a>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -68,13 +68,13 @@
             const email = document.querySelector('.email');
 
             typewriter.addEventListener('animationend', function () {
-                typewriter.style.border = 'none'; // Remove the caret after typing title
+                typewriter.style.borderRight = 'none'; // Remove the caret after typing title
                 email.style.display = 'inline-block'; // Display the email
                 email.style.borderRight = '0.15em solid black'; // Add caret to email
             });
 
             email.addEventListener('animationend', function () {
-                email.style.border = 'none'; // Remove the caret after typing email
+                email.style.borderRight = 'none'; // Remove the caret after typing email
             });
         });
     </script>
