@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tnr.me.uk</title>
+    <title>My Domain</title>
     <style>
         body {
             display: flex;
@@ -16,36 +16,66 @@
             font-family: Arial, sans-serif;
         }
 
+        .typewriter, .email {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 0.15em solid black;
+        }
+
         .typewriter {
             font-size: 3rem;
             font-weight: bold;
             color: black;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 0.15em solid black; 
-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+            animation: typingTitle 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
         }
 
-        @keyframes typing {
+        .email {
+            font-size: 1rem;
+            font-weight: normal;
+            color: black;
+            margin-top: 1rem;
+            width: 0;
+            border: none;
+            display: none;
+            animation: typingEmail 3.5s steps(40, end) forwards;
+        }
+
+        @keyframes typingTitle {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes typingEmail {
             from { width: 0; }
             to { width: 100%; }
         }
 
         @keyframes blink-caret {
             from, to { border-color: transparent; }
-            50% { border-color: black; } 
-        }
-
-        .email {
-            font-size: 1rem;
-            font-weight: normal; 
-            color: black;
-            margin-top: 1rem; 
+            50% { border-color: black; }
         }
     </style>
 </head>
 <body>
-    <div class="typewriter">tnr.me.uk</div>
-    <div class="email">noah@tnr.me.uk</div>
+    <div class="typewriter">mydomain.net</div>
+    <a href="mailto:me@domain.net" class="email">me@domain.net</a>
+
+    <script>
+        // JavaScript to control the sequence of animations
+        document.addEventListener('DOMContentLoaded', function () {
+            const typewriter = document.querySelector('.typewriter');
+            const email = document.querySelector('.email');
+
+            typewriter.addEventListener('animationend', function () {
+                typewriter.style.border = 'none'; // Remove the caret after typing title
+                email.style.display = 'inline-block'; // Display the email
+                email.style.borderRight = '0.15em solid black'; // Add caret to email
+            });
+
+            email.addEventListener('animationend', function () {
+                email.style.border = 'none'; // Remove the caret after typing email
+            });
+        });
+    </script>
 </body>
 </html>
