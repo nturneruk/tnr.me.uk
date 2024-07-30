@@ -1,14 +1,70 @@
-⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣤⣴⣦⣤⣤⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⣠⣴⠾⠛⠉⠉⠀⠀⠀⠀⠈⠉⠛⠿⣦⣄⠀⠀⠀⠀⠀
-⠀⠀⣠⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⢷⣄⠀⠀⠀
-⠀⣰⡟⠁⠀⠀⠀⣀⡤⡀⠀⠀⠀⠀⠀⣠⢄⠀⠀⠀⠀⠻⣧⠀⠀
-⣰⡟⠀⠀⠀⠀⢰⣿⣿⣷⠀⠀⠀⠀⣼⣿⣿⡇⠀⠀⠀⠀⢻⣧⠀
-⣿⠃⠀⠀⠀⠀⠘⣿⣿⡿⠀⠀⠀⠀⢹⣿⣿⠇⠀⠀⠀⠀⠈⣿⡄
-⣿⠀⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀⠉⠉⠀⠀⠀⠀⠀⠀⣿⡇
-⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠃
-⠹⣧⠀⠀⠀⢳⣤⣄⣀⡀⠀⠀⠀⠀⠀⣀⣀⣤⡾⠀⠀⠀⣸⡟⠀
-⠀⠻⣧⡀⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⠀⠀⣴⡟⠀⠀
-⠀⠀⠙⢷⣄⡀⠀⠈⠛⠿⣿⣿⣿⣿⠿⠟⠋⠀⠀⣠⣾⠏⠀⠀⠀
-⠀⠀⠀⠀⠙⠻⣶⣤⣀⡀⠀⠀⠀⠀⠀⣀⣠⣴⠿⠋⠁⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠉⠙⠛⠛⠿⠿⠛⠛⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠀⠀⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Smiley Faces</title>
+    <style>
+        body {
+            position: relative;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+        .smiley {
+            position: absolute;
+            font-size: 24px;
+            user-select: none;
+            opacity: 0;
+            animation: fadeMove 5s infinite;
+        }
+        @keyframes fadeMove {
+            0% {
+                opacity: 0;
+                transform: translate(0, 0);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(calc(var(--x-end) * 1px), calc(var(--y-end) * 1px));
+            }
+            100% {
+                opacity: 0;
+                transform: translate(0, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    
+    function getRandomNumber(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
+    function createRandomSmiley() {
+        const smiley = document.createElement('div');
+        smiley.classList.add('smiley');
+        smiley.textContent = ':-)';
+        
+        // Set random initial position
+        smiley.style.left = getRandomNumber(0, window.innerWidth) + 'px';
+        smiley.style.top = getRandomNumber(0, window.innerHeight) + 'px';
+
+        // Set random movement direction
+        smiley.style.setProperty('--x-end', getRandomNumber(-200, 200));
+        smiley.style.setProperty('--y-end', getRandomNumber(-200, 200));
+
+        // Append smiley to the body
+        document.body.appendChild(smiley);
+    }
+
+    // Create multiple smileys
+    for (let i = 0; i < 50; i++) {
+        createRandomSmiley();
+    }
+</script>
+
+</body>
+</html>
