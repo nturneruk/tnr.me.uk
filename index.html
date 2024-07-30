@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Domain</title>
+    <title>tnr.me.uk</title>
     <style>
         body {
             display: flex;
@@ -44,12 +44,12 @@
 
         @keyframes typingTitle {
             from { width: 0; }
-            to { width: 12ch; } /* Adjust width to match the length of the text */
+            to { width: 12ch; }
         }
 
         @keyframes typingEmail {
             from { width: 0; }
-            to { width: 14ch; } /* Adjust width to match the length of the text */
+            to { width: 14ch; } 
         }
 
         @keyframes blink-caret {
@@ -59,8 +59,8 @@
     </style>
 </head>
 <body>
-    <div class="typewriter">mydomain.net</div>
-    <a href="mailto:me@domain.net" class="email">me@domain.net</a>
+    <div class="typewriter">tnr.me.uk</div>
+    <a href="mailto:me@domain.net" class="email">noah@tnr.me.uk</a>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -68,13 +68,13 @@
             const email = document.querySelector('.email');
 
             typewriter.addEventListener('animationend', function () {
-                typewriter.style.borderRight = 'none'; // Remove the caret after typing title
-                email.style.display = 'inline-block'; // Display the email
-                email.style.borderRight = '0.15em solid black'; // Add caret to email
+                typewriter.style.borderRight = 'none'; 
+                email.style.display = 'inline-block'; 
+                email.style.borderRight = '0.15em solid black'; 
             });
 
             email.addEventListener('animationend', function () {
-                email.style.borderRight = 'none'; // Remove the caret after typing email
+                email.style.borderRight = 'none'; 
             });
         });
     </script>
