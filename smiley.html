@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smiley</title>
+    <title>Random Smiley Faces</title>
     <style>
         body {
             position: relative;
@@ -33,16 +33,49 @@
                 transform: translate(0, 0);
             }
         }
+        .popup {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .popup a {
+            color: #00f;
+            text-decoration: none;
+            margin-left: 5px;
+        }
+        .popup .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #00008B; /* Dark blue color */
+        }
     </style>
 </head>
 <body>
 
+<div class="popup" id="popup">
+    <span class="close-btn" id="close-btn">&times;</span>
+    Feeling too happy? <a href="http://tnr.me.uk" target="_blank">Go home</a>
+</div>
+
 <script>
-    
+    // Function to generate a random number between min and max
     function getRandomNumber(min, max) {
         return Math.random() * (max - min) + min;
     }
 
+    // Function to create a smiley at a random position with random animation direction
     function createRandomSmiley() {
         const smiley = document.createElement('div');
         smiley.classList.add('smiley');
@@ -61,9 +94,14 @@
     }
 
     // Create multiple smileys
-    for (let i = 0; i < 150; i++) {
+    for (let i = 0; i < 50; i++) {
         createRandomSmiley();
     }
+
+    // Handle the close button of the popup
+    document.getElementById('close-btn').addEventListener('click', function() {
+        document.getElementById('popup').style.display = 'none';
+    });
 </script>
 
 </body>
