@@ -14,7 +14,6 @@
         }
         .smiley {
             position: absolute;
-            font-size: 24px;
             user-select: none;
             opacity: 0;
             animation: fadeMove 5s infinite;
@@ -35,30 +34,35 @@
         }
         .popup {
             position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
             text-align: center;
-            padding: 20px;
-            font-size: 18px;
+            padding: 15px;
+            font-size: 16px;
             display: none; 
             justify-content: center;
             align-items: center;
+            border-radius: 10px;
+            width: 300px;
         }
         .popup a {
-            color: #00f;
+            color: white;
             text-decoration: none;
             margin-left: 5px;
         }
+        .popup a:hover {
+            color: grey;
+        }
         .popup .close-btn {
             position: absolute;
-            top: 10px;
+            top: 5px;
             right: 10px;
             font-size: 20px;
             cursor: pointer;
-            color: #00008B;
+            color: #00008B; 
         }
     </style>
 </head>
@@ -66,40 +70,48 @@
 
 <div class="popup" id="popup">
     <span class="close-btn" id="close-btn">&times;</span>
-    Feeling too happy? <a href="http://tnr.me.uk" target="_blank">Go home</a>
+    Feeling too happy? <a href="http://tnr.me.uk" target="_blank">home</a>
 </div>
 
 <script>
+    
     function getRandomNumber(min, max) {
         return Math.random() * (max - min) + min;
     }
+
+   
     function createRandomSmiley() {
         const smiley = document.createElement('div');
         smiley.classList.add('smiley');
         smiley.textContent = ':-)';
         
-       
+        
         smiley.style.left = getRandomNumber(0, window.innerWidth) + 'px';
         smiley.style.top = getRandomNumber(0, window.innerHeight) + 'px';
 
-      
+
+        const size = getRandomNumber(16, 48);
+        smiley.style.fontSize = size + 'px';
+
+        
         smiley.style.setProperty('--x-end', getRandomNumber(-200, 200));
         smiley.style.setProperty('--y-end', getRandomNumber(-200, 200));
 
-        
+       
         document.body.appendChild(smiley);
     }
 
-
+    
     for (let i = 0; i < 150; i++) {
         createRandomSmiley();
     }
 
- 
+    
     setTimeout(function() {
         document.getElementById('popup').style.display = 'flex';
     }, 30000); 
 
+    
     document.getElementById('close-btn').addEventListener('click', function() {
         document.getElementById('popup').style.display = 'none';
     });
